@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="mypro">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/public/styles.css">
+  </head>
+  <body ng-controller="myController">
+    <h1>Search your product</h1>
+<div>
+  <form method="get"  class="form1">
+      <label >Search product</label><br>
+     <p>{{product.proName}}</p>
+     <input type="text" ng-model="search" ng-autocomplete="products">
+     <ul>
+       <li ng-repeat="product in products | filter:search">
+         {{product.proName}}   - 
+         {{product.proPrice}}
+       </li>
+
+</ul>
+    </form>
+</div>
+    <form method="post" action="/addname" class="form2">
+        <label>Enter the product name</label><br>
+        <input type="text" name="proName" placeholder="Enter product name..." required>
+        <input type="text" name="proPrice" placeholder="Enter price..." required>
+        <input type="submit" value="Add product">
+    </form>
+</div>
+  </body>
+</html>
